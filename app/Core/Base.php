@@ -84,6 +84,7 @@ use Pimple\Container;
  * @property \Kanboard\Formatter\UserMentionFormatter                $userMentionFormatter
  * @property \Kanboard\Model\ActionModel                             $actionModel
  * @property \Kanboard\Model\ActionParameterModel                    $actionParameterModel
+ * @property \Kanboard\Model\ActorModel                              $actorModel
  * @property \Kanboard\Model\AvatarFileModel                         $avatarFileModel
  * @property \Kanboard\Model\BoardModel                              $boardModel
  * @property \Kanboard\Model\CategoryModel                           $categoryModel

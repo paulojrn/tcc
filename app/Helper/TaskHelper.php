@@ -82,6 +82,28 @@ class TaskHelper extends Base
 
         return $html;
     }
+    
+    public function renderActorField(array $project, array $actors = array())
+    {
+        $options = $this->actorModel->getAssignableList($project['id']);
+        
+        $html = $this->helper->form->label(t('Actor'), 'actors[]');
+        $html .= '<input type="hidden" name="actors[]" value="">';
+        $html .= '<select name="actors[]" id="form-actors" class="tag-autocomplete" multiple>';
+        
+        foreach ($options as $actor) {
+            $html .= sprintf(
+                '<option value="%s" %s>%s</option>',
+                $this->helper->text->e($actor),
+                in_array($actor, $actors) ? 'selected="selected"' : '',
+                $this->helper->text->e($actor)
+            );
+        }
+        
+        $html .= '</select>';
+        
+        return $html;
+    }
 
     public function renderColorField(array $values)
     {
