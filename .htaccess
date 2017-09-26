@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    Options -MultiViews
+
+    SetEnv HTTP_MOD_REWRITE On
+
+    # Uncomment this line depending of your Apache configuration
+    # RewriteBase /
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+    
+    ############################
+    ## Uncomment the two lines below to enable force HTTPS capabilities
+    ############################
+    
+    # RewriteCond %{HTTPS} !=on 
+    # RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+</IfModule>
+
+<IfModule pagespeed_module>
+    ModPagespeed Off
+</IfModule>
