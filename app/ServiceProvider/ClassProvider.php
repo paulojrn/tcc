@@ -99,6 +99,7 @@ class ClassProvider implements ServiceProviderInterface
         ),
         'Validator' => array(
             'ActionValidator',
+            'ActorValidator',
             'AuthValidator',
             'CategoryValidator',
             'ColumnMoveRestrictionValidator',

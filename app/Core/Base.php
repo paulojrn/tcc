@@ -160,6 +160,7 @@ use Pimple\Container;
  * @property \Kanboard\Pagination\SubtaskPagination                  $subtaskPagination
  * @property \Kanboard\Pagination\UserPagination                     $userPagination
  * @property \Kanboard\Validator\ActionValidator                     $actionValidator
+ * @property \Kanboard\Validator\ActorValidator                      $actorValidator
  * @property \Kanboard\Validator\AuthValidator                       $authValidator
  * @property \Kanboard\Validator\ColumnValidator                     $columnValidator
  * @property \Kanboard\Validator\CategoryValidator                   $categoryValidator

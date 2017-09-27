@@ -341,6 +341,7 @@ class ComposerStaticInitb84a31048141f316b4354b17de38312a
         'Kanboard\\Controller\\PasswordResetController' => __DIR__ . '/../..' . '/app/Controller/PasswordResetController.php',
         'Kanboard\\Controller\\PluginController' => __DIR__ . '/../..' . '/app/Controller/PluginController.php',
         'Kanboard\\Controller\\ProjectActionDuplicationController' => __DIR__ . '/../..' . '/app/Controller/ProjectActionDuplicationController.php',
+        'Kanboard\\Controller\\ProjectActorController' => __DIR__ . '/../..' . '/app/Controller/ProjectActorController.php',
         'Kanboard\\Controller\\ProjectCreationController' => __DIR__ . '/../..' . '/app/Controller/ProjectCreationController.php',
         'Kanboard\\Controller\\ProjectEditController' => __DIR__ . '/../..' . '/app/Controller/ProjectEditController.php',
         'Kanboard\\Controller\\ProjectFileController' => __DIR__ . '/../..' . '/app/Controller/ProjectFileController.php',

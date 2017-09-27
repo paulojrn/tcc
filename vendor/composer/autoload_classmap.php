@@ -205,6 +205,7 @@ return array(
     'Kanboard\\Controller\\PasswordResetController' => $baseDir . '/app/Controller/PasswordResetController.php',
     'Kanboard\\Controller\\PluginController' => $baseDir . '/app/Controller/PluginController.php',
     'Kanboard\\Controller\\ProjectActionDuplicationController' => $baseDir . '/app/Controller/ProjectActionDuplicationController.php',
+    'Kanboard\\Controller\\ProjectActorController' => $baseDir . '/app/Controller/ProjectActorController.php',
     'Kanboard\\Controller\\ProjectCreationController' => $baseDir . '/app/Controller/ProjectCreationController.php',
     'Kanboard\\Controller\\ProjectEditController' => $baseDir . '/app/Controller/ProjectEditController.php',
     'Kanboard\\Controller\\ProjectFileController' => $baseDir . '/app/Controller/ProjectFileController.php',
