@@ -552,6 +552,7 @@ return array(
     'Kanboard\\Model\\TagModel' => $baseDir . '/app/Model/TagModel.php',
     'Kanboard\\Model\\ActorModel' => $baseDir . '/app/Model/ActorModel.php',
     'Kanboard\\Model\\TaskAnalyticModel' => $baseDir . '/app/Model/TaskAnalyticModel.php',
+    'Kanboard\\Model\\TaskActorModel' => $baseDir . '/app/Model/TaskActorModel.php',
     'Kanboard\\Model\\TaskCreationModel' => $baseDir . '/app/Model/TaskCreationModel.php',
     'Kanboard\\Model\\TaskDuplicationModel' => $baseDir . '/app/Model/TaskDuplicationModel.php',
     'Kanboard\\Model\\TaskExternalLinkModel' => $baseDir . '/app/Model/TaskExternalLinkModel.php',

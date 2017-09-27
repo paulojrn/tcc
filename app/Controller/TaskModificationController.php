@@ -62,6 +62,7 @@ class TaskModificationController extends BaseController
             'errors' => $errors,
             'task' => $task,
             'tags' => $this->taskTagModel->getList($task['id']),
+            'actors' => $this->taskActorModel->getList($task['id']),
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'categories_list' => $this->categoryModel->getList($task['project_id']),
         );

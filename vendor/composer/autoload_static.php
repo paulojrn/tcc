@@ -688,6 +688,7 @@ class ComposerStaticInitb84a31048141f316b4354b17de38312a
         'Kanboard\\Model\\TagModel' => __DIR__ . '/../..' . '/app/Model/TagModel.php',
         'Kanboard\\Model\\ActorModel' => __DIR__ . '/../..' . '/app/Model/ActorModel.php',
         'Kanboard\\Model\\TaskAnalyticModel' => __DIR__ . '/../..' . '/app/Model/TaskAnalyticModel.php',
+        'Kanboard\\Model\\TaskActorModel' => __DIR__ . '/../..' . '/app/Model/TaskActorModel.php',
         'Kanboard\\Model\\TaskCreationModel' => __DIR__ . '/../..' . '/app/Model/TaskCreationModel.php',
         'Kanboard\\Model\\TaskDuplicationModel' => __DIR__ . '/../..' . '/app/Model/TaskDuplicationModel.php',
         'Kanboard\\Model\\TaskExternalLinkModel' => __DIR__ . '/../..' . '/app/Model/TaskExternalLinkModel.php',

@@ -11,6 +11,7 @@
             'task' => $task,
             'external_task' => $external_task,
             'tags' => $tags,
+            'actors' => $actors,
             'users_list' => $users_list,
             'categories_list' => $categories_list,
             'values' => $values,

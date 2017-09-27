@@ -25,6 +25,7 @@ class TaskModificationModel extends Base
         $task = $this->taskFinderModel->getById($values['id']);
 
         $this->updateTags($values, $task);
+        $this->updateActors($values, $task);
         $this->prepare($values);
         $result = $this->db->table(TaskModel::TABLE)->eq('id', $task['id'])->update($values);
 
@@ -122,6 +123,21 @@ class TaskModificationModel extends Base
         if (isset($values['tags'])) {
             $this->taskTagModel->save($original_task['project_id'], $values['id'], $values['tags']);
             unset($values['tags']);
+        }
+    }
+    
+    /**
+     * Update actors
+     *
+     * @access protected
+     * @param  array  $values
+     * @param  array  $original_task
+     */
+    protected function updateActors(array &$values, array $original_task)
+    {
+        if (isset($values['actors'])) {
+            $this->taskActorModel->save($original_task['project_id'], $values['id'], $values['actors']);
+            unset($values['actors']);
         }
     }
 }
