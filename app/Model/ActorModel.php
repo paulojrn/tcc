@@ -73,7 +73,7 @@ class ActorModel extends Base
     }
     
     /**
-     * Get ator id from tag name
+     * Get ator id from actor name
      *
      * @access public
      * @param  int    $project_id
@@ -124,12 +124,12 @@ class ActorModel extends Base
      * @param  string $actor
      * @return bool|int
      */
-    public function findOrCreateTag($project_id, $actor)
+    public function findOrCreateActor($project_id, $actor)
     {
         $actor_id = $this->getIdByName($project_id, $actor);
         
         if (empty($actor_id)) {
-            $tag_id = $this->create($project_id, $actor);
+            $actor_id = $this->create($project_id, $actor);
         }
         
         return $actor_id;
@@ -140,7 +140,7 @@ class ActorModel extends Base
      *
      * @access public
      * @param  int    $project_id
-     * @param  string $tag
+     * @param  string $actor
      * @return bool|int
      */
     public function create($project_id, $actor)
@@ -152,11 +152,11 @@ class ActorModel extends Base
     }
     
     /**
-     * Update a tag
+     * Update a actor
      *
      * @access public
-     * @param  integer $tag_id
-     * @param  string  $tag
+     * @param  integer $actor_id
+     * @param  string  $actor
      * @return bool
      */
     public function update($actor_id, $actor)
@@ -170,7 +170,7 @@ class ActorModel extends Base
      * Remove a actor
      *
      * @access public
-     * @param  integer $tag_id
+     * @param  integer $actor_id
      * @return bool
      */
     public function remove($actor_id)
