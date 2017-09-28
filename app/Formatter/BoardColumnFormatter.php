@@ -16,6 +16,7 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
     protected $columns = array();
     protected $tasks = array();
     protected $tags = array();
+    protected $actors = array();
 
     /**
      * Set swimlaneId
@@ -68,6 +69,19 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
         $this->tags = $tags;
         return $this;
     }
+    
+    /**
+     * Set actors
+     *
+     * @access public
+     * @param  array $actors
+     * @return $this
+     */
+    public function withActors(array $actors)
+    {
+        $this->actors = $actors;
+        return $this;
+    }
 
     /**
      * Apply formatter
@@ -82,6 +96,7 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
             $column['tasks'] = $this->boardTaskFormatter
                 ->withTasks($this->tasks)
                 ->withTags($this->tags)
+                ->withActors($this->actors)
                 ->withSwimlaneId($this->swimlaneId)
                 ->withColumnId($column['id'])
                 ->format();

@@ -1,5 +1,5 @@
 <div class="dropdown">
-    <a href="#" class="dropdown-menu dropdown-menu-link-icon"><strong>#<?= $task['id'] ?> <i class="fa fa-caret-down"></i></strong></a>
+    <a href="#" class="dropdown-menu dropdown-menu-link-icon"><strong>#<?= $task['id']; ?> <i class="fa fa-caret-down"></i></strong></a>
     <ul>
         <?php if ($this->projectRole->canUpdateTask($task)): ?>
             <?php if (array_key_exists('date_started', $task) && empty($task['date_started'])): ?>
@@ -58,4 +58,5 @@
 
         <?= $this->hook->render('template:task:dropdown', array('task' => $task)) ?>
     </ul>
+    <br><em><b>Actor:</b> <?= $task['actors'][0]['name']; ?></em>
 </div>
