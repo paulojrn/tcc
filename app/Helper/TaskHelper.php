@@ -104,6 +104,21 @@ class TaskHelper extends Base
         
         return $html;
     }
+    
+    public function multipleActorsNameToString(array $actors)
+    {
+        $actors_name = "";
+        $actors_count = count($actors);
+        
+        for ($i = 0; $i < $actors_count - 1; $i++)
+        {
+            $actors_name = $actors_name.$actors[$i]['name'].", ";
+        }
+        
+        $actors_name = $actors_name.$actors[$actors_count-1]['name'];
+        
+        return $actors_name;
+    }
 
     public function renderColorField(array $values)
     {
