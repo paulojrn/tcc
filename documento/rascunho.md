@@ -2,15 +2,27 @@
 
 # 2. Fundamentação Teórica
 
-Este capítulo apresenta os fundamentos dos tópicos essenciais para a compreenção deste trabalho de conclusão de curso. A sessão seguinte detalha os principais tópicos sobre o histórico e uso do diagrama UML de casos de uso. Nesse contexto, é especificado uma outra visão sobre casos de uso, denominada use *case 2.0*, descrita na sessão 2.2. A sessão 2.3 Kanban desecreve a origem e prática de uma estratégia ágil para gerenciamento de projetos. Concluindo este capítulo, a sessão 2.4. Ferramentas de planejamento, monitoração e controle apresenta um sumário sobre ferramentas que representam a infra-estrutura tecnológica para a prática do Kanban e caso de uso em ambientes modernos de desenvolvimento.
+Este capítulo apresenta os fundamentos dos tópicos essenciais para a compreenção deste trabalho de conclusão de curso. A sessão seguinte detalha os principais tópicos sobre o histórico e uso de casos de uso. Nesse contexto, é especificado uma outra visão sobre casos de uso, denominada use *case 2.0*, descrita na sessão 2.2. A sessão 2.3 Kanban desecreve a origem e prática de uma estratégia ágil para gerenciamento de projetos. Concluindo este capítulo, a sessão 2.4. Ferramentas de planejamento, monitoração e controle apresenta um sumário sobre ferramentas que representam a infra-estrutura tecnológica para a prática do Kanban e caso de uso em ambientes modernos de desenvolvimento.
 
 ## 2.1. Use case
 
-**Explicar processo de engenharia de software**
+Requisitos de software pode ser definido de duas formas (POHL, 2016): Uma condição ou capacidade de um usuário resolver um problema ou alcançar um objetivo; ou uma condição ou capacidade que precisa ser atingida, ou possuída, por um sistema (ou módulo do sistema), para satisfazer um contrato, padrão, especificação ou outro documento formal.
+Nesse contexto, o processo de engenharia de requisitos é composto de 4 atividades fundamentais  (POHL, 2016): 
 
-Nesse contexto, uma técnica importante para a análise de requisitos que tem sido largamente aplicada no desenvolvimento de software, é a análise de casos de uso. Um caso de uso é definido como uma lista de ações ou etapas que definem as interações entre um ator -- papel que representa um usuário humano ou outro sistema externo que interage com o sistema (OMG, 2017) -- e o sistema, para atingir um objetivo específico (JACOBSON et al., 1992). Logo, a análise de casos de uso usa-se de casos de uso para identificar requisitos de um sistema para o desenvolvimento de um sistema de software.
+1. Licitação: Diferentes técnicas usadas para obter os requisitos de stakeholders e outras fontes para refinar os requisitos.
+2. Documentação: Descrição adequada dos requisitos obtidos na atividade de licitação. Diferentes técnicas podem ser usadas para documentar os requisitos, usando linguagem natural ou modelos conceituais.
+3. Validação e negociação: Para garantir coerência, os requisitos devem ser validados pelos stakeholders.
+4. Gerenciamento de requisitos: Atividades necessárias para estruturar requisitos, prepara-los para que possam ser compreendidos por diferentes pessoas com diferentes responsabilidades, e principalmente manter consistência depois de mudanças para garantir a implementação adequada.
 
-Atualmente não há um consenso da comunidade acadêmica e indústria para o formato correto do uso dos casos de uso. Cockburn, 1999 afirma que casos de uso são meramente formas de se escrever requisitos. Consequentemente, diferentes propósitos acarretam em diferentes modelos.
+Requisitos de software licitados podem ser documentados de diversas formas, como histórias de usuário ou casos de uso por exemplo (WIEGERS, BEATTY, 2013). Nesse cenário, uma técnica importante para a análise de requisitos que tem sido largamente aplicada no desenvolvimento de software, é a análise de casos de uso. Um caso de uso é definido como uma lista de ações ou etapas que definem as interações entre um ator -- papel que representa um usuário humano ou outro sistema externo que interage com o sistema (OMG, 2017) -- e o sistema, para atingir um objetivo específico (JACOBSON et al., 1992). Logo, a análise de casos de uso usa-se de casos de uso para identificar requisitos de um sistema para o desenvolvimento de um sistema de software.
+
+Atualmente não há um consenso da comunidade acadêmica e indústria para o formato correto do uso dos casos de uso. Cockburn, 1999 afirma que casos de uso são meramente formas de se escrever requisitos. Consequentemente, diferentes propósitos acarretam em diferentes modelos. Classicamente um caso de uso deve descrever um fluxo principal de atividades de um ator, baseado em um conjunto de premissas, possíveis fluxos alternativos e pós-condições esperadas após a conclusão do caso de uso (COCKBURN, 1999).
+
+Uma ferramenta gráfica para ilustrar casos de uso é o diagrama UML de casos de uso. Nesse diagrama, um ator é relacionado a um conjunto de casos de uso (Figura 1).
+
+[incluir figura 1]
+
+Este diagrama pode incluir ainda mais informação sobre o caso de uso com o uso de anotações UML. Por exemplo, a figura 1 mostra a anotação *include*, que implica que o caso de uso X e Y tem um fluxo de atividades em comum, que é representado no caso de uso Z. Da mesma maneira, há uma fluxo de atividades opcional em X, que é representado no caso de uso W.
 
 ## 2.2. Use Case 2.0
 
@@ -38,13 +50,17 @@ Para focar no cliente e trabalho que atinge as necessidades do cliente, invés d
 
 A operacionalização desses conceitos é atingido por intermédio de um quadro kanban (tradução livre do termo kanban board). Esse quadro exibe um conjunto de cartões que desecrevem uma tarefa a ser resolvida. Esses cartões são organizados no quadro por colunas: uma coluna representa o estado que a tarefa se encontra. Por exemplo, o quadro kanban ilustrado na Figura 1 apresenta x tickets organizados em y colunas.
 
-[incluir imagem 1]
+[incluir figura 1]
 
 Interpretando o quadro, pode-se notar que as tarefas x, y e z estão definidas mas o seu desenvolvimento ainda não começou. As tarefas i e j estão em desenvolvimento, as tarefas k e l estão prontas para revisão, w e s estão sendo revisadas e p, q, r estão prontas para serem empacotadas e entregues para o cliente. Nota-se que na coluna "Trabalho em andamento" há uma limitação de cartões. Assim é possível que uma terceira tarefa seja desenvolvida paralelamente a i e j, contudo não é possível começar uma quarta tarefa enquanto as três primeiras não sejam terminadas.
 
-## 2.4. Ferramentas de planejamento monitoramento e controle.
+## 2.4. Ferramentas de planejamento, monitoramento e controle.
 
+Ferramentas como quadro kanban auxilia na visualização do fluxo de trabalho, contudo há a desvantagem do uso do espaço físico. Considerando membros da mesma equipe geograficamente disperços, há uma dificuldade em se manter a paridade entre quadros kanban diferentes. Outra desvantagem de se utilizar meios físicos é a dificuldade de manter um histórico completo (necessário para resgatar pacotes de trabalho já terminados) e backup em caso de sinistros (como uma faxineira insandecida motivada pelo desejo de limpar uma parede coberta de papeis). Com o objetivo de resolver estes problemas, atualmente há uma demanda para ferramentas automatizadas de planejamento, monitoração e controle.
 
+Uma dessas ferramentas é o Kanboard (https://kanboard.net/). O foco em simplicidade e minimalismo pode dar uma aparência amadora para esta ferramenta web, porém suas funcionalidades revelam um sistema poderoso e estável. A última versão (até esta data) da ferramenta, 1.0.46 permite a visualização objetiva das tarefas, facilidade em arrastar tarefas entre colunas, busca, diferentes formas de visualização, ações automáticas, gráficos de Gantt, relatórios de produtividade além de integrações com várias ferramentas, backend de autenticação múltipla e internacionalização para 26 idiomas.
+
+A Figura 2 apresenta o mesmo quadro kanban da Figura 1, porém usando o Kanboard. Nota-se que não há perda de informações; pelo contrário, o uso do Kanboard permite que seja visualizado várias informações como prioridade, complexidade, prazo com mais clareza.
 
 ---
 # Citações
@@ -56,3 +72,6 @@ Interpretando o quadro, pode-se notar que as tarefas x, y e z estão definidas m
 * SUGIMORI, Y. et al. Toyota production system and kanban system materialization of just-in-time and respect-for-human system. The International Journal of Production Research, v. 15, n. 6, p. 553-564, 1977.
 * OHNO, Taiichi. Toyota production system: beyond large-scale production. crc Press, 1988.
 * BOEG, Jesper. Priming Kanban. InfoQ/Trifork,, 2012.
+* POHL, Klaus. Requirements engineering fundamentals: a study guide for the certified professional for requirements engineering exam-foundation level-IREB compliant. Rocky Nook, Inc., 2016.
+* WIEGERS, Karl; BEATTY, Joy. Software requirements. Pearson Education, 2013.
+* https://kanboard.net/
