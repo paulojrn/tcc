@@ -1,5 +1,9 @@
 # 1. Introdução
 
+Novos produtos baseados em software devem superar uma desvantajosa estatística. Aproximadamente 70% (STEVBROS) dos produtos de software falharão, e a razão é uma pobre engenharia de requisitos -- a prática de coleta de requisitos de um sistema a partir de usuários, clientes e outros stakeholders (CHEMUTURI, 2012). Nesse contexto, uma eficiente coleta de requisitos é necessária para minimizar esses problemas que tem consequencias drásticas em desenvolvimento de software.
+
+Um eficiente modo de se capturar requisitos de software é usando casos de uso 2.0.
+
 # 2. Fundamentação Teórica
 
 Este capítulo apresenta os fundamentos dos tópicos essenciais para a compreenção deste trabalho de conclusão de curso. A sessão seguinte detalha os principais tópicos sobre o histórico e uso de casos de uso. Nesse contexto, é especificado uma outra visão sobre casos de uso, denominada use *case 2.0*, descrita na sessão 2.2. A sessão 2.3 Kanban desecreve a origem e prática de uma estratégia ágil para gerenciamento de projetos. Concluindo este capítulo, a sessão 2.4. Ferramentas de planejamento, monitoração e controle apresenta um sumário sobre ferramentas que representam a infra-estrutura tecnológica para a prática do Kanban e caso de uso em ambientes modernos de desenvolvimento.
@@ -75,3 +79,5 @@ A Figura 2 apresenta o mesmo quadro kanban da Figura 1, porém usando o Kanboard
 * POHL, Klaus. Requirements engineering fundamentals: a study guide for the certified professional for requirements engineering exam-foundation level-IREB compliant. Rocky Nook, Inc., 2016.
 * WIEGERS, Karl; BEATTY, Joy. Software requirements. Pearson Education, 2013.
 * https://kanboard.net/
+* http://stevbros.com/blog/80-new-products-fail-70-of-software-projects-fail-due-to-poor-requirements.html
+* Chemuturi, Murali. Requirements engineering and management for software development projects. Springer Science & Business Media, 2012.
