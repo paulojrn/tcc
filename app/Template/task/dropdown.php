@@ -58,5 +58,5 @@
 
         <?= $this->hook->render('template:task:dropdown', array('task' => $task)) ?>
     </ul>
-    <br><em><b>Actor:</b> <?= $this->task->multipleActorsNameToString($task['actors']); ?></em>
+    <br><em><b>Actor:</b> <?= $this->task->multipleActorsNameToString($task['actors']); ?></em><br>
 </div>
