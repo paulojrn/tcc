@@ -2,7 +2,16 @@
 
 Novos produtos baseados em software devem superar uma desvantajosa estatística. Aproximadamente 70% (STEVBROS) dos produtos de software falharão, e a razão é uma pobre engenharia de requisitos -- a prática de coleta de requisitos de um sistema a partir de usuários, clientes e outros stakeholders (CHEMUTURI, 2012). Nesse contexto, uma eficiente coleta de requisitos é necessária para minimizar esses problemas que tem consequencias drásticas em desenvolvimento de software.
 
-Um eficiente modo de se capturar requisitos de software é usando casos de uso 2.0.
+Um caso de uso representa todos os modos de se usar um sistema para atingir os objetivos específicos de um usuário específico (JACOBSON, 2011). O conjunto de todos os casos de uso fornece todas as maneiras úteis de se usar o sistema e ilustra o valor que esse sistema fornecerá. Uma modernização dessa abordagem, chamada de caso de uso 2.0 é uma prática escalável, ágil que usa casos de uso para capturar um conjunto de requisitos e guiar o desenvolvimento incremental do sistema (JACOBSON, 2011).
+
+Jacobson (2011) sugere 6 princípios para a aplicação de casos de uso com sucesso:
+
+1. Simplificar através de estórias;
+2. Conhecer o todo;
+3. Foco no valor;
+4. Construir o sistema em fatias (*slices* em inglês);
+5. Entregar o sistema em incrementos; e
+6. Adaptar para se enquadrar nas necessidades da equipe.
 
 # 2. Fundamentação Teórica
 
@@ -20,9 +29,7 @@ Nesse contexto, o processo de engenharia de requisitos é composto de 4 atividad
 
 Requisitos de software licitados podem ser documentados de diversas formas, como histórias de usuário ou casos de uso por exemplo (WIEGERS, BEATTY, 2013). Nesse cenário, uma técnica importante para a análise de requisitos que tem sido largamente aplicada no desenvolvimento de software, é a análise de casos de uso. Um caso de uso é definido como uma lista de ações ou etapas que definem as interações entre um ator -- papel que representa um usuário humano ou outro sistema externo que interage com o sistema (OMG, 2017) -- e o sistema, para atingir um objetivo específico (JACOBSON et al., 1992). Logo, a análise de casos de uso usa-se de casos de uso para identificar requisitos de um sistema para o desenvolvimento de um sistema de software.
 
-Atualmente não há um consenso da comunidade acadêmica e indústria para o formato correto do uso dos casos de uso. Cockburn, 1999 afirma que casos de uso são meramente formas de se escrever requisitos. Consequentemente, diferentes propósitos acarretam em diferentes modelos. Classicamente um caso de uso deve descrever um fluxo principal de atividades de um ator, baseado em um conjunto de premissas, possíveis fluxos alternativos e pós-condições esperadas após a conclusão do caso de uso (COCKBURN, 1999).
-
-Uma ferramenta gráfica para ilustrar casos de uso é o diagrama UML de casos de uso. Nesse diagrama, um ator é relacionado a um conjunto de casos de uso (Figura 1).
+Atualmente não há um consenso da comunidade acadêmica e indústria para o formato correto do uso dos casos de uso. Cockburn, 1999 afirma que casos de uso são meramente formas de se escrever requisitos. Consequentemente, diferentes propósitos acarretam em diferentes modelos. Classicamente um caso de uso deve descrever um fluxo principal de atividades de um ator, baseado em um conjunto de premissas, possíveis fluxos alternativos e pós-condições esperadas após a conclusão do caso de uso (COCKBURN, 1999). Uma ferramenta gráfica para ilustrar casos de uso é o diagrama UML de casos de uso. Nesse diagrama, um ator é relacionado a um conjunto de casos de uso (Figura 1).
 
 [incluir figura 1]
 
@@ -81,3 +88,4 @@ A Figura 2 apresenta o mesmo quadro kanban da Figura 1, porém usando o Kanboard
 * https://kanboard.net/
 * http://stevbros.com/blog/80-new-products-fail-70-of-software-projects-fail-due-to-poor-requirements.html
 * Chemuturi, Murali. Requirements engineering and management for software development projects. Springer Science & Business Media, 2012.
+* USE-CASE 2.0 The Guide to Succeeding with Use Cases Ivar Jacobson, 2011
