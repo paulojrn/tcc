@@ -49,7 +49,7 @@ class TaskCreationController extends BaseController
     {
         $project = $this->getProject();
         $values = $this->request->getValues();
-
+        
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
 
         if (! $valid) {
