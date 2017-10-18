@@ -48,7 +48,6 @@ class TaskCreationModel extends Base
             }
             
             if (! empty($actors)) {
-                $this->taskTagModel->save($values['project_id'], $task_id, $tags);
                 $this->taskActorModel->save($values['project_id'], $task_id, $actors);
             }
 
