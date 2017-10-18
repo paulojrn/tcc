@@ -33,6 +33,9 @@
             </li>
             <li <?= $this->app->checkMenuSelection('ProjectTagController') ?>>
                 <?= $this->url->link(t('Tags'), 'ProjectTagController', 'index', array('project_id' => $project['id'])) ?>
+            </li>           
+            <li <?= $this->app->checkMenuSelection('ProjectActorController') ?>>
+                <?= $this->url->link(t('Actors'), 'ProjectActorController', 'index', array('project_id' => $project['id'])) ?>
             </li>
             <?php if ($project['is_private'] == 0): ?>
             <li <?= $this->app->checkMenuSelection('ProjectPermissionController') ?>>

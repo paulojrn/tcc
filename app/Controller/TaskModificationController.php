@@ -46,7 +46,7 @@ class TaskModificationController extends BaseController
         if (! $this->helper->projectRole->canUpdateTask($task)) {
             throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }
-
+        
         $project = $this->projectModel->getById($task['project_id']);
 
         if (empty($values)) {
@@ -62,6 +62,7 @@ class TaskModificationController extends BaseController
             'errors' => $errors,
             'task' => $task,
             'tags' => $this->taskTagModel->getList($task['id']),
+            'actors' => $this->taskActorModel->getList($task['id']),
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'categories_list' => $this->categoryModel->getList($task['project_id']),
         );
@@ -115,7 +116,7 @@ class TaskModificationController extends BaseController
         if (isset($values['owner_id']) && $values['owner_id'] != $task['owner_id'] && !$this->helper->projectRole->canChangeAssignee($task)) {
             throw new AccessForbiddenException(t('You are not allowed to change the assignee.'));
         }
-
+        
         if (! $this->helper->projectRole->canUpdateTask($task)) {
             throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }

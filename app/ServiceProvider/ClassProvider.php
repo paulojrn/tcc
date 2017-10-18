@@ -28,6 +28,7 @@ class ClassProvider implements ServiceProviderInterface
         'Model' => array(
             'ActionModel',
             'ActionParameterModel',
+            'ActorModel',
             'AvatarFileModel',
             'BoardModel',
             'CategoryModel',
@@ -73,6 +74,7 @@ class ClassProvider implements ServiceProviderInterface
             'TagModel',
             'TaskModel',
             'TaskAnalyticModel',
+            'TaskActorModel',
             'TaskCreationModel',
             'TaskDuplicationModel',
             'TaskProjectDuplicationModel',
@@ -98,6 +100,7 @@ class ClassProvider implements ServiceProviderInterface
         ),
         'Validator' => array(
             'ActionValidator',
+            'ActorValidator',
             'AuthValidator',
             'CategoryValidator',
             'ColumnMoveRestrictionValidator',

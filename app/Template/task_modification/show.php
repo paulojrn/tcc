@@ -11,6 +11,7 @@
             <?= $this->task->renderTitleField($values, $errors) ?>
             <?= $this->task->renderDescriptionField($values, $errors) ?>
             <?= $this->task->renderTagField($project, $tags) ?>
+            <?= $this->task->renderActorField($project, $actors) ?>            
 
             <?= $this->hook->render('template:task:form:first-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>

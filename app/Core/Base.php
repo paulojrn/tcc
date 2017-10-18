@@ -84,6 +84,7 @@ use Pimple\Container;
  * @property \Kanboard\Formatter\UserMentionFormatter                $userMentionFormatter
  * @property \Kanboard\Model\ActionModel                             $actionModel
  * @property \Kanboard\Model\ActionParameterModel                    $actionParameterModel
+ * @property \Kanboard\Model\ActorModel                              $actorModel
  * @property \Kanboard\Model\AvatarFileModel                         $avatarFileModel
  * @property \Kanboard\Model\BoardModel                              $boardModel
  * @property \Kanboard\Model\CategoryModel                           $categoryModel
@@ -131,6 +132,7 @@ use Pimple\Container;
  * @property \Kanboard\Model\TagModel                                $tagModel
  * @property \Kanboard\Model\TaskModel                               $taskModel
  * @property \Kanboard\Model\TaskAnalyticModel                       $taskAnalyticModel
+ * @property \Kanboard\Model\TaskActorModel                          $taskActorModel
  * @property \Kanboard\Model\TaskCreationModel                       $taskCreationModel
  * @property \Kanboard\Model\TaskDuplicationModel                    $taskDuplicationModel
  * @property \Kanboard\Model\TaskProjectDuplicationModel             $taskProjectDuplicationModel
@@ -159,6 +161,7 @@ use Pimple\Container;
  * @property \Kanboard\Pagination\SubtaskPagination                  $subtaskPagination
  * @property \Kanboard\Pagination\UserPagination                     $userPagination
  * @property \Kanboard\Validator\ActionValidator                     $actionValidator
+ * @property \Kanboard\Validator\ActorValidator                      $actorValidator
  * @property \Kanboard\Validator\AuthValidator                       $authValidator
  * @property \Kanboard\Validator\ColumnValidator                     $columnValidator
  * @property \Kanboard\Validator\CategoryValidator                   $categoryValidator
