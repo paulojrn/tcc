@@ -91,7 +91,7 @@ A Figura 2 apresenta o mesmo quadro kanban da Figura 1, porém usando o Kanboard
 * SUGIMORI, Y. et al. Toyota production system and kanban system materialization of just-in-time and respect-for-human system. The International Journal of Production Research, v. 15, n. 6, p. 553-564, 1977.
 * OHNO, Taiichi. Toyota production system: beyond large-scale production. crc Press, 1988.
 * BOEG, Jesper. Priming Kanban. InfoQ/Trifork,, 2012.
-* POHL, Klaus. Requirements engineering fundamentals: a study guide for the certified professional for requirements engineering exam-foundation level-IREB compliant. Rocky Nook, Inc., 2016.
+* POHL, Klaus. Requirements engineering fundamentals: a study guide for the certified professional for requirements engineering exam-foundation level-IREB compliant. Rocky Nook, Inc., 2016. (https://books.google.com.br/books?id=1VsUDgAAQBAJ&lpg=PT38&ots=vy812UJlhe&dq=Requirements%20engineering%20fundamentals%20pohl&lr&hl=pt-BR&pg=PT169#v=onepage&q&f=false)
 * WIEGERS, Karl; BEATTY, Joy. *software* requirements. Pearson Education, 2013.
 * https://kanboard.net/
 * http://stevbros.com/blog/80-new-products-fail-70-of-*software*-projects-fail-due-to-poor-requirements.html
