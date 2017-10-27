@@ -1,0 +1,90 @@
+Pontos importantes Use case 2.0:
+
+A) USE CASE
+
+1. At the heart of Use-Case 2.0 are the use case, the story and the use-case slice. These capture the requirements and drive the development of the system.
+2. A use case undergoes several state changes from its initial identification through to its fulfillment by the system:
+	2.1. Goal Established: when the goal of the use case has been established.
+	2.2. Story Structure Understood: when the structure of the use-case narrative has been understood enough for the team to start work identifying and implementing the first use-case slices.
+	2.3. Simplest Story Fulfilled: when the system fulfills the simplest story that allows a user to achieve the goal.
+	2.4. Sufficient Stories Fulfilled: when the system fulfills enough of the stories to provide a usable solution.
+	2.5. All Stories Fulfilled: when the system fulfills all the stories told by the use case.
+
+B) USE CASE SLICES
+
+1. Use cases cover many related stories of varying importance and priority. There are often too many stories to deliver in a single release and generally too many to work on in a single increment.
+2. divide the use cases into smaller pieces that 1) allow us to select which pieces of the use case to deliver when, 2) provide a suitable unit for development and testing by the development team, and 3) allow us to have small and similarly sized pieces of work that flow quickly through development.
+3. A use-case slice is one or more stories selected from a use case to form a work item.
+4. The use-case slice evolves to include the corresponding slices through design, implementation and test.
+5. It is not only used to help with the requirements but to drive the development of a system to fulfill them.
+6. Enable the requirements contained in a set of use cases to be ordered, prioritized and addressed in parallel.
+7. Use-case slice undergoes several state changes from its initial identification through to its final acceptance.
+	7.1. Scoped: when it has been scoped and the extent of the stories covered has been clarified.
+	7.2. Prepared: when the slice has been prepared by enhancing the narrative and test cases to clearly define what it means to successfully implement the slice.
+	7.3. Analyzed: when the slice has been analyzed so its impact on the components of the system is understood and the pieces affected are ready for coding and developer testing.
+	7.4. Implemented: when the software system has been enhanced to implement the slice and the slice is ready for testing
+	7.5. Verified: and finally when the slice has been verified as done and is ready for inclusion in a release.
+8. To the casual observer glancing at the states, this might look like a waterfall process: scoping>preparation>analysis>implementation>verification. There’s a big difference, though. In a waterfall approach, all the requirements are prepared before the analysis starts, and all the analysis is completed before the implementation starts, and all the implementation is completed before the verification
+starts. Here we are dealing with an individual use-case slice. Across the set of slices all the activities could be going on in parallel. While one use-case slice is being verified, another use-case slice is being implemented, a third is being implemented, and a fourth being analyzed.
+
+C) STORIES
+
+1. Telling stories is how we explore the use cases with our stakeholders. Each story of value to the users and other stakeholders is a thread through one of the use cases. The stories can be functional or non-functional in nature.
+2. The network of flows can be thought of as a map that summarizes all the stories needed to describe the use case.
+3. There are two common approaches to identifying the stories and creating the use-case narrative: Top Down and Botton Up.
+4. The stories are a useful thinking tool to help us find the right use-case slices and, most importantly, the right test cases.
+
+D) Defects and Changes
+
+1. Changes requested by the stakeholders are analyzed against the current use-case model, use cases, and use case slices. This enables the extent of the change to be quickly understood. For example adding a new use case to the system is a major change as it changes the system’s overall goals and purpose; whereas a change to an existing use case is typically much smaller, particularly if it is to a story that has not been allocated to a slice and prepared, analyzed, implemented or verified.
+2. Defects are handled by tracking which use-case slices, and by implication which test cases, resulted in their detection. If they are found during the implementation or verification of a use-case slice then that slice cannot advance until the defect is addressed and the test can be passed. If they are found later during regression testing then the relationship between the failed test cases and the use cases allows you to quickly discern what impact the defect will have on the users and the usability of the system.
+
+E) Work Product
+
+1. The use-case model visualizes the requirements as a set of use cases, providing an overall big picture of the system to be built. The model defines the use cases and provides the context for the elaboration of the individual use cases.
+2. The use cases are explored by telling stories. Each use case is described by 1) a use-case narrative that outlines its stories and 2) a set of test cases that complete the stories.
+3. The stories are described as a set of flows. These can be complemented with a set of special requirements that will influence the stories, help you assign the right stories to the use-case slices for implementation, and most importantly define the right test cases.
+4. The use-case model is complemented by supporting information. This captures the definitions of the terms used in the use-case model and when outlining the stories in the use-case narratives.
+5. The essential properties for a use-case slice are 1) a list of its stories, 2) references to the use case and the flows that define the stories, 3) references to the tests and test cases that will be used to verify its completion, and 4) an estimate of the work needed to implement and test the slice.
+6. In this case the team has played planning poker to create relative estimates using story points; 5 story points for slices 7.1 and 7.2, and 13 story points for slice 7.3 which the team believe will take more than twice the effort of the other slices.
+
+F) Find actors and use cases
+
+1. Find some actors and use cases: hold a use-case modeling workshop with your stakeholders.
+2. no need to find all the system’s use cases, just focus on those that are going to provide the stakeholders with the value they are looking for.
+3. other actors and use cases will be found as you inspect and adapt the use cases
+4. if the use case is in scope it should be outlined so that there is enough information to start the slicing process.
+5. repeat this activity as necessary to evolve your model and find any missing actors or use cases. 
+
+G) Slice the use case
+
+1. You don’t need to completely slice up the use cases, just pull out the slices that are needed to progress the work and leave the rest of the stories in the use cases for slicing when and if they are needed.
+2. The slices created should be ordered for delivery to make sure the development team tackles them in the right order.
+
+H) Prepare use case slice
+
+1. When preparing a use-case slice you should focus on the needs of the developers and testers who will implement and verify the slice.
+2. You should create the use-case narrative and the test cases at the same time
+
+I) Analyze the use case slice
+
+1. the first thing to do is to work out how it will affect the system.
+2. analyzing the slice is just the final thing to be undertaken by the developer before the coding starts
+3. he result of this kind of analysis is known as a use-case realization as it shows how the use case is realized by the elements of the implementing system.
+
+--> The software will be developed slice-by-slice, with different team members working in parallel on different 
+slices. Each slice will require changes to one or more pieces of the system. To complete the implementation 
+of a slice the resulting pieces of software will have to be unit tested and then integrated with the rest of the 
+system.
+
+--> Each use-case slice needs to be tested before it can be considered complete and verified.
+
+--> Priorities change, lessons are learnt and 
+changes are requested. These can all have an impact 
+on the use cases and use-case slices that have already 
+been implemented, as well as those still waiting to be 
+progressed. 
+
+
+
+
