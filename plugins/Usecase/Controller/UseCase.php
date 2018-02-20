@@ -10,35 +10,32 @@ class UseCase extends BaseController
     {
         $project = $this->getProject();
         $search = $this->helper->projectHeader->getSearchQuery($project);
-        $tasks = $this->taskLexer
+        $tasks_tree = $this->taskLexer
         ->build($search)
         ->format($this->boardFormatter->withProjectId($project['id']));
-        $task = $tasks[0]['columns'][0]['tasks'][0];
+        $tasks = $tasks_tree[0]['columns'][0]['tasks'];
         
-        /*$this->response->html($this->helper->layout->app('use_case/diagram', array(
-         'project' => $project,
-         'task' => $tasks[0]['column'][0]['tasks'],
-         'title' => $project['name'],
-         'description' => $this->helper->projectHeader->getDescription($project),
-         'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-         'board_highlight_period' => $this->configModel->get('board_highlight_period'),
-         'swimlanes' => $this->taskLexer
-         ->build($search)
-         ->format($this->boardFormatter->withProjectId($project['id']))
-         )));*/
-        //var_dump($tasks[0]['columns'][0]['tasks']);die;
+        //ver quando for projetos diferentes
+        //só criar slice dentro ou depois do caso de uso
+        //se um caso de uso andar no board, o slice anda junto ou impossibilita o caso de uso de andar
+        //se todos os slices terminarem o caso de uso também acaba?
+        //fazer o ator aparecer no gráfico
         
-        $graph = $this->createGraph($task);
+        for ($i = 0; $i < count($tasks); $i++){
+            if(strcmp($tasks[$i]['category_name'], "use case") == 0){
+                $graphs[$i] = $this->createGraph($tasks[$i]);
+            }
+        }
         
         $this->response->html(
             $this->helper->layout->task(
                 'usecase:task/show',
-                [
-                    'title' => $task['title'],
-                    'task' => $task,
-                    'graph' => $graph,
-                    'project' => $this->projectModel->getById($task['project_id'])
-                ]
+                    [
+                        'title' => '', //inutilizado
+                        'task' => $tasks,
+                        'graphs' => $graphs,
+                        'project' => $this->projectModel->getById($project['id'])
+                    ]
                 )
             );
     }
