@@ -20,20 +20,33 @@ class UseCase extends BaseController
         //se um caso de uso andar no board, o slice anda junto ou impossibilita o caso de uso de andar
         //se todos os slices terminarem o caso de uso também acaba?
         //fazer o ator aparecer no gráfico
-        
+
         for ($i = 0; $i < count($tasks); $i++){
             if(strcmp($tasks[$i]['category_name'], "use case") == 0){
                 $graphs[$i] = $this->createGraph($tasks[$i]);
+                for ($j = 0; $j < count($tasks[$i]['actors']); $j++){
+                    $actor_id = $tasks[$i]['actors'][$j]['id'];
+
+                    if(!array_key_exists($actor_id,$actors)){
+                        $actors[$actor_id]['actor_id'] = $tasks[$i]['actors'][$j]['id'].' actor -';
+                        $actors[$actor_id]['actor_name'] = $tasks[$i]['actors'][$j]['name'];
+                        $actors[$actor_id]['task_ids'][0] = (int)$tasks[$i]['actors'][$j]['task_id'];
+                    }
+                    else{
+                        $actors[$actor_id]['task_ids'][count($actors[$actor_id]['task_ids'])] = (int)$tasks[$i]['actors'][$j]['task_id'];
+                    }
+                }
             }
         }
-        
+
         $this->response->html(
             $this->helper->layout->task(
                 'usecase:task/show',
                     [
-                        'title' => '', //inutilizado
+                        'title' => '',
                         'task' => $tasks,
                         'graphs' => $graphs,
+                        'actors' => $actors,
                         'project' => $this->projectModel->getById($project['id'])
                     ]
                 )
@@ -74,7 +87,8 @@ class UseCase extends BaseController
                 'column' => $task['column_title'],
                 'priority' => $task['priority'],
                 'assignee' => $task['assignee_name'] ?: $task['assignee_username'],
-                'color' => $this->colorModel->getColorProperties($task['color_id'])
+                'color' => $this->colorModel->getColorProperties($task['color_id']),
+                'actors' => $task['actors']
             ];
         }
         

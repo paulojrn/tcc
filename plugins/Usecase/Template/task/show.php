@@ -53,6 +53,21 @@
             ?>
         <?php endforeach ?>
     <?php endforeach ?>
+    
+    <?php foreach ($actors as $actor) : ?>
+            <?php 
+                
+            $items[] = [
+                'id' => $actor['actor_id'],
+                'label' => '#' . $actor['actor_id'] . ' ' . $actor['actor_name'],
+                'color' => $actor['color'],
+                'image' => 'plugins/Usecase/Pics/use-case-actor.jpg',
+                'shape' => 'image'
+                
+            ];
+            ?>
+    <?php endforeach ?>
+    
     <?php echo json_encode($items) ?>
 </div>
 
@@ -62,6 +77,7 @@
         <?php foreach ($graph['edges'] as $task => $links) : ?>
             <?php foreach ($links as $edge => $type) : ?>
                 <?php
+
                 $items[] = [
                     'from' => $task,
                     'to' => $edge,
@@ -74,6 +90,23 @@
             <?php endforeach ?>
         <?php endforeach ?>
     <?php endforeach ?>
+    
+    <?php foreach ($actors as $actor) : ?>
+        <?php foreach ($actor['task_ids'] as $task_id) : ?>
+                <?php
+
+                $items[] = [
+                    'from' => $actor['actor_id'],
+                    'to' => $task_id,
+                    'label' => t("use case"),
+                    'length' => 200,
+                    'font' => ['align' => 'top'],
+                    'arrows' => 'to'
+                ];
+                ?>
+        <?php endforeach ?>
+    <?php endforeach ?>
+    
     <?php echo json_encode($items) ?>
 </div>
 
