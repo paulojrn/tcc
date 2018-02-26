@@ -44,7 +44,7 @@ class TaskModificationController extends BaseController
         $task = $this->getTask();
 
         if (! $this->helper->projectRole->canUpdateTask($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
+            throw new AccessForbiddenException(t('You are not allowed to update tasks or use cases assigned to someone else.'));
         }
         
         $project = $this->projectModel->getById($task['project_id']);
@@ -53,20 +53,49 @@ class TaskModificationController extends BaseController
             $values = $task;
         }
 
+        $values['actors'] = $this->taskActorModel->getList($task['id']);        
         $values = $this->hook->merge('controller:task:form:default', $values, array('default_values' => $values));
         $values = $this->hook->merge('controller:task-modification:form:default', $values, array('default_values' => $values));
-
-        $params = array(
-            'project' => $project,
-            'values' => $values,
-            'errors' => $errors,
-            'task' => $task,
-            'tags' => $this->taskTagModel->getList($task['id']),
-            'actors' => $this->taskActorModel->getList($task['id']),
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
-            'categories_list' => $this->categoryModel->getList($task['project_id']),
-        );
-
+        
+        if($task['category_id'] == "1"){
+            $params = array(
+                'project' => $project,
+                'values' => $values,
+                'errors' => $errors,
+                'task' => $task,
+                'tags' => $this->taskTagModel->getList($task['id']),
+                'actors' => $this->taskActorModel->getList($task['id']),
+                'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+                'categories_list' => array(1 => "use case")
+            );            
+        }
+        else       
+            if($task['category_id'] == "2"){
+                $params = array(
+                    'project' => $project,
+                    'values' => $values,
+                    'errors' => $errors,
+                    'task' => $task,
+                    'tags' => $this->taskTagModel->getList($task['id']),
+                    'actors' => $this->taskActorModel->getList($task['id']),
+                    'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+                    'categories_list' => array(1 => "slice")
+                );
+                
+            }
+            else{
+                $params = array(
+                    'project' => $project,
+                    'values' => $values,
+                    'errors' => $errors,
+                    'task' => $task,
+                    'tags' => $this->taskTagModel->getList($task['id']),
+                    'actors' => $this->taskActorModel->getList($task['id']),
+                    'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+                    'categories_list' => $this->categoryModel->getList($task['project_id']),
+                );
+            }
+        
         $this->renderTemplate($task, $params);
     }
 

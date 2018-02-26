@@ -39,6 +39,67 @@ class TaskCreationController extends BaseController
             'swimlanes_list' => $swimlanesList,
         )));
     }
+    
+    /**
+     * Display a form to create a new use case
+     *
+     * @access public
+     * @param  array $values
+     * @param  array $errors
+     * @throws PageNotFoundException
+     */
+    public function show2(array $values = array(), array $errors = array())
+    {
+        $project = $this->getProject();
+        $swimlanesList = $this->swimlaneModel->getList($project['id'], false, true);
+        $values += $this->prepareValues($project['is_private'], $swimlanesList);
+        
+        $values = $this->hook->merge('controller:task:form:default', $values, array('default_values' => $values));
+        $values = $this->hook->merge('controller:task-creation:form:default', $values, array('default_values' => $values));
+        
+        $this->response->html($this->template->render('task_creation/show2', array(
+            'project' => $project,
+            'errors' => $errors,
+            'values' => $values + array('project_id' => $project['id']),
+            'columns_list' => $this->columnModel->getList($project['id']),
+            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, $project['is_private'] == 1),
+            'categories_list' => $this->categoryModel->getList($project['id']),
+            'swimlanes_list' => $swimlanesList,
+        )));
+    }
+    
+    /**
+     * Display a form to create a new slice
+     *
+     * @access public
+     * @param  array $values
+     * @param  array $errors
+     * @throws PageNotFoundException
+     */
+    public function show3(array $values = array(), array $errors = array())
+    {        
+        $project = $this->getProject();
+
+        $swimlanesList = $this->swimlaneModel->getList($project['id'], false, true);
+        $values += $this->prepareValues($project['is_private'], $swimlanesList);
+        
+        $values = $this->hook->merge('controller:task:form:default', $values, array('default_values' => $values));
+        $values = $this->hook->merge('controller:task-creation:form:default', $values, array('default_values' => $values));
+        
+        $this->response->html($this->template->render('task_creation/show3', array(
+            'project' => $project,
+            'errors' => $errors,
+            'values' => $values + array('project_id' => $project['id']),
+            'use_case_data' => $_GET + array('project' => $project),
+            'columns_list' => $this->columnModel->getList($project['id']),
+            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, $project['is_private'] == 1),
+            'categories_list' => $this->categoryModel->getList($project['id']),
+            'swimlanes_list' => $swimlanesList,
+        )));
+        
+        //usar $_GET
+        //enviar id do caso de uso para fazer o link interno
+    }
 
     /**
      * Validate and save a new task
@@ -60,12 +121,84 @@ class TaskCreationController extends BaseController
             $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
         } else {
             $task_id = $this->taskCreationModel->create($values);
+            
 
             if ($task_id > 0) {
                 $this->flash->success(t('Task created successfully.'));
                 $this->afterSave($project, $values, $task_id);
             } else {
                 $this->flash->failure(t('Unable to create this task.'));
+                $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            }
+        }
+    }
+    
+    /**
+     * Validate and save a new use case
+     *
+     * @access public
+     */
+    public function save2()
+    {
+        $project = $this->getProject();
+        $values = $this->request->getValues();
+        $values['category_id'] = "1";
+        
+        list($valid, $errors) = $this->taskValidator->validateCreation($values);
+        
+        if (! $valid) {
+            $this->flash->failure(t('Unable to create your use case.'));
+            $this->show($values, $errors);
+        } else if (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
+            $this->flash->failure(t('You cannot create use cases in this column.'));
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+        } else {
+            $task_id = $this->taskCreationModel->create($values);
+            
+            if ($task_id > 0) {
+                $this->flash->success(t('Use case created successfully.'));
+                $this->afterSave($project, $values, $task_id);
+            } else {
+                $this->flash->failure(t('Unable to create this use case.'));
+                $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            }
+        }
+    }
+    
+    /**
+     * Validate and save a new slice
+     *
+     * @access public
+     */
+    public function save3()
+    {
+        //var_dump($_GET);die;
+        //$project = $this->getProject();
+        $project = $_GET['use_case_data']['project'];
+        $_GET['use_case_data']['color_id'] = "blue";
+        
+        //var_dump($_GET['use_case_data']['project']);die;
+        $values = $this->request->getValues();
+        
+        $values['category_id'] = "2";
+        
+        list($valid, $errors) = $this->taskValidator->validateCreation($values);
+        
+        if (! $valid) {
+            $this->flash->failure(t('Unable to create your slice.'));
+            $this->show($values, $errors);
+        } else if (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
+            $this->flash->failure(t('You cannot create slices in this column.'));
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+        } else {
+            $task_id = $this->taskCreationModel->create($values);
+            
+            if ($task_id > 0) {
+                $this->flash->success(t('Slice created successfully.'));
+                $this->afterSave($project, $values, $task_id);
+                $this->taskLinkModel->create($project = $_GET['use_case_data']['id'], $task_id, 13);
+            } else {
+                $this->flash->failure(t('Unable to create this slice.'));
                 $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
             }
         }

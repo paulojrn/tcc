@@ -25,6 +25,12 @@
                 <?= $this->modal->large('plus', t('Add a new task'), 'TaskCreationController', 'show', array('project_id' => $project['id'])) ?>
             </li>
         <?php endif ?>
+        
+        <?php if ($this->user->hasProjectAccess('TaskCreationController', 'show2', $project['id'])): ?>
+            <li>
+                <?= $this->modal->large('plus', t('Add a new use case'), 'TaskCreationController', 'show2', array('project_id' => $project['id'])) ?>
+            </li>
+        <?php endif ?>
 
         <li>
             <?= $this->modal->medium('dashboard', t('Activity'), 'ActivityController', 'project', array('project_id' => $project['id'])) ?>

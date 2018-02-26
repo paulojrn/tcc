@@ -1,17 +1,16 @@
 <div class="page-header">
-    <h2><?= $this->text->e($project['name']) ?> &gt; <?= $this->text->e($task['title']) ?></h2>
+    <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('New use case') ?><?= $this->task->getNewTaskDropdown($project['id'], $values['swimlane_id'], $values['column_id']) ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('TaskModificationController', 'update', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('TaskCreationController', 'save2', array('project_id' => $project['id'])) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
-    <?= $this->form->hidden('id', $values) ?>
     <?= $this->form->hidden('project_id', $values) ?>
 
     <div class="task-form-container">
         <div class="task-form-main-column">
             <?= $this->task->renderTitleField($values, $errors) ?>
             <?= $this->task->renderDescriptionField($values, $errors) ?>
-            <?= $this->task->renderTagField($project, $tags) ?>
-            <?= $this->task->renderActorField($project, $actors) ?>            
+            <?= $this->task->renderTagField($project) ?>
+            <?= $this->task->renderActorField($project) ?>
 
             <?= $this->hook->render('template:task:form:first-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>
@@ -19,12 +18,10 @@
         <div class="task-form-secondary-column">
             <?= $this->task->renderColorField($values) ?>
             <?= $this->task->renderAssigneeField($users_list, $values, $errors) ?>
-            <?= $this->task->renderCategoryField($categories_list, $values, $errors) ?>
+            <?= $this->task->renderSwimlaneField($swimlanes_list, $values, $errors) ?>
+            <?= $this->task->renderColumnField($columns_list, $values, $errors) ?>
             <?= $this->task->renderPriorityField($project, $values) ?>
-            <?php if ($values['category_id'] == "1"): ?>
-                <br><br>
-                <?= $this->modal->large('code-fork', t('Add Slice'), 'TaskCreationController', 'show3', $values) ?>
-			<?php endif?>
+
             <?= $this->hook->render('template:task:form:second-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>
 
@@ -40,7 +37,11 @@
         </div>
 
         <div class="task-form-bottom">
-            <?= $this->modal->submitButtons() ?>            
+            <?php if (! isset($duplicate)): ?>
+                <?= $this->form->checkbox('duplicate_multiple_projects', t('Duplicate to multiple projects'), 1) ?>
+            <?php endif ?>
+
+            <?= $this->modal->submitButtons() ?>
         </div>
     </div>
 </form>
