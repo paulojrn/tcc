@@ -13,32 +13,32 @@ class UseCase extends BaseController
         $tasks_tree = $this->taskLexer
         ->build($search)
         ->format($this->boardFormatter->withProjectId($project['id']));
-        $tasks = $tasks_tree[0]['columns'][0]['tasks'];
+        //$tasks = $tasks_tree[0]['columns'][0]['tasks'];
+        $columns = $tasks_tree[0]['columns'];
         
         //ver quando for projetos diferentes
-        //só criar slice dentro ou depois do caso de uso
         //se um caso de uso andar no board, o slice anda junto ou impossibilita o caso de uso de andar
         //se todos os slices terminarem o caso de uso também acaba?
-        //fazer o ator aparecer no gráfico
-
-        for ($i = 0; $i < count($tasks); $i++){
-            if(strcmp($tasks[$i]['category_name'], "use case") == 0){
-                $graphs[$i] = $this->createGraph($tasks[$i]);
-                for ($j = 0; $j < count($tasks[$i]['actors']); $j++){
-                    $actor_id = $tasks[$i]['actors'][$j]['id'];
-
-                    if(!array_key_exists($actor_id,$actors)){
-                        $actors[$actor_id]['actor_id'] = $tasks[$i]['actors'][$j]['id'].' actor -';
-                        $actors[$actor_id]['actor_name'] = $tasks[$i]['actors'][$j]['name'];
-                        $actors[$actor_id]['task_ids'][0] = (int)$tasks[$i]['actors'][$j]['task_id'];
-                    }
-                    else{
-                        $actors[$actor_id]['task_ids'][count($actors[$actor_id]['task_ids'])] = (int)$tasks[$i]['actors'][$j]['task_id'];
+        foreach ($columns as $tasksAux){
+            $tasks = $tasksAux['tasks'];
+            for ($i = 0; $i < count($tasks); $i++){
+                if(strcmp($tasks[$i]['category_name'], "use case") == 0){
+                    $graphs[$i] = $this->createGraph($tasks[$i]);
+                    for ($j = 0; $j < count($tasks[$i]['actors']); $j++){
+                        $actor_id = $tasks[$i]['actors'][$j]['id'];
+    
+                        if(!array_key_exists($actor_id,$actors)){
+                            $actors[$actor_id]['actor_id'] = $tasks[$i]['actors'][$j]['id'].' actor -';
+                            $actors[$actor_id]['actor_name'] = $tasks[$i]['actors'][$j]['name'];
+                            $actors[$actor_id]['task_ids'][0] = (int)$tasks[$i]['actors'][$j]['task_id'];
+                        }
+                        else{
+                            $actors[$actor_id]['task_ids'][count($actors[$actor_id]['task_ids'])] = (int)$tasks[$i]['actors'][$j]['task_id'];
+                        }
                     }
                 }
             }
         }
-
         $this->response->html(
             $this->helper->layout->task(
                 'usecase:task/show',

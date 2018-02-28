@@ -172,14 +172,9 @@ class TaskCreationController extends BaseController
      */
     public function save3()
     {
-        //var_dump($_GET);die;
-        //$project = $this->getProject();
         $project = $_GET['use_case_data']['project'];
         $_GET['use_case_data']['color_id'] = "blue";
-        
-        //var_dump($_GET['use_case_data']['project']);die;
-        $values = $this->request->getValues();
-        
+        $values = $this->request->getValues();        
         $values['category_id'] = "2";
         
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
