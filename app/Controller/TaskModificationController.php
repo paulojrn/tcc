@@ -79,7 +79,7 @@ class TaskModificationController extends BaseController
                     'tags' => $this->taskTagModel->getList($task['id']),
                     'actors' => $this->taskActorModel->getList($task['id']),
                     'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
-                    'categories_list' => array(1 => "slice")
+                    'categories_list' => array(2 => "slice")
                 );
                 
             }

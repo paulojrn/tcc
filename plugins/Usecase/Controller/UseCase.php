@@ -81,6 +81,7 @@ class UseCase extends BaseController
                 'id' => $task['id'],
                 'title' => $task['title'],
                 'active' => $task['is_active'],
+                'category' => $task['category_id'],
                 'project_id' => $task['project_id'],
                 'project' => $task['project_name'],
                 'score'=> $task['score'],

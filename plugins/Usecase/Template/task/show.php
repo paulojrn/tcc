@@ -14,7 +14,7 @@
         <?php foreach ($graph['nodes'] as $node) : ?>
             <?php 
             $titleItems = [];
-    
+
             if ($node['project_id'] != $task['project_id']) {
                 $titleItems[] = t('Project: ') . $node['project'];
             }
@@ -29,34 +29,54 @@
     
             $titleItems[] = t('Priority: ') . $node['priority'];
             $titleItems[] = t('Column: ') . $node['column'];
-    
-            $items[] = [
-                'id' => $node['id'],
-                'label' => '#' . $node['id'] . ' ' . $node['title'],
-                'color' => $node['color'],
-                'shape' => 'box',
-                'size' => '20',
-                'shapeProperties' => $node['active'] ? array('borderDashes' => array()) : array('borderDashes' => array(5, 5)),
-                'font' => array('color' => $node['active'] ? 'black' : 'gray'),
-                'scaling' => [
-                    'min' => 30,
-                    'max' => 30
-                ],
-                'shadow' => 'true',
-                'mass' => 2,
-                'title' => join('<br>', $titleItems)
-            ];
+            if($node['category'] == "1"){
+                $items[] = [
+                    'id' => $node['id'],
+                    'label' => '#' . $node['id'] . ' ' . $node['title'],
+                    'color' => $node['color'],
+                    'size' => '20',
+                    'shapeProperties' => $node['active'] ? array('borderDashes' => array()) : array('borderDashes' => array(5, 5)),
+                    'font' => array('color' => $node['active'] ? 'black' : 'gray'),
+                    'scaling' => [
+                        'min' => 30,
+                        'max' => 30
+                    ],
+                    'shadow' => 'true',
+                    'mass' => 2,
+                    'title' => join('<br>', $titleItems)
+                ];
+            }
+            else{
+                $items[] = [
+                    'id' => $node['id'],
+                    'label' => '#' . $node['id'] . ' ' . $node['title'],
+                    'color' => "#000000",
+                    'size' => '20',
+                    'image' => 'plugins/Usecase/Pics/slice.png',
+                    'shape' => 'image',
+                    'shapeProperties' => $node['active'] ? array('borderDashes' => array()) : array('borderDashes' => array(5, 5)),
+                    'font' => array('color' => $node['active'] ? 'black' : 'gray'),
+                    'scaling' => [
+                        'min' => 30,
+                        'max' => 30
+                    ],
+                    'shadow' => 'true',
+                    'mass' => 2,
+                    'title' => join('<br>', $titleItems)
+                ];
+            }
+            
             ?>
         <?php endforeach ?>
     <?php endforeach ?>
     
     <?php foreach ($actors as $actor) : ?>
             <?php 
-                
+
             $items[] = [
                 'id' => $actor['actor_id'],
                 'label' => '#' . $actor['actor_id'] . ' ' . $actor['actor_name'],
-                'color' => $actor['color'],
+                'color' => "#000000",
                 'image' => 'plugins/Usecase/Pics/use-case-actor.jpg',
                 'shape' => 'image'
                 
@@ -73,14 +93,14 @@
         <?php foreach ($graph['edges'] as $task => $links) : ?>
             <?php foreach ($links as $edge => $type) : ?>
                 <?php
-
                 $items[] = [
-                    'from' => $task,
-                    'to' => $edge,
+                    'from' => $edge,
+                    'to' => $task,
                     'label' => t($type),
                     'length' => 200,
                     'font' => ['align' => 'top'],
-                    'arrows' => 'to'
+                    'arrows' => 'to',
+                    'dashes' => true
                 ];
                 ?>
             <?php endforeach ?>
@@ -94,7 +114,6 @@
                 $items[] = [
                     'from' => $actor['actor_id'],
                     'to' => $task_id,
-                    'label' => t("use case"),
                     'length' => 200,
                     'font' => ['align' => 'top'],
                     'arrows' => 'to'
