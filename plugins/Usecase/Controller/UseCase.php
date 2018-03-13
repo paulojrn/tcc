@@ -15,15 +15,16 @@ class UseCase extends BaseController
         ->format($this->boardFormatter->withProjectId($project['id']));
         //$tasks = $tasks_tree[0]['columns'][0]['tasks'];
         $columns = $tasks_tree[0]['columns'];
-        
+       
         //ver quando for projetos diferentes
-        //se um caso de uso andar no board, o slice anda junto ou impossibilita o caso de uso de andar
         //se todos os slices terminarem o caso de uso também acaba?
+        $k = 0;
         foreach ($columns as $tasksAux){
             $tasks = $tasksAux['tasks'];
             for ($i = 0; $i < count($tasks); $i++){
-                if(strcmp($tasks[$i]['category_name'], "use case") == 0){
-                    $graphs[$i] = $this->createGraph($tasks[$i]);
+                if(strcmp($tasks[$i]['category_name'], "use case") == 0){                    
+                    $graphs[$k] = $this->createGraph($tasks[$i]);
+                    $k++;
                     for ($j = 0; $j < count($tasks[$i]['actors']); $j++){
                         $actor_id = $tasks[$i]['actors'][$j]['id'];
     

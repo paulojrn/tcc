@@ -10,13 +10,20 @@
             <?= $this->task->renderTitleField($values, $errors) ?>
             <?= $this->task->renderDescriptionField($values, $errors) ?>
             <?= $this->task->renderTagField($project) ?>
-            <?= $this->task->renderActorField($project) ?>
+            <?= $this->task->renderActorField($project) ?><span class="form-required">*</span>
+
+            <?php if ($errors["use_case"]):?>
+            <ul class="form-errors">
+            	<li>
+            		<p>At least one actor is required</p>
+            	</li>
+            </ul>
+            <?php endif ?>
 
             <?= $this->hook->render('template:task:form:first-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>
 
         <div class="task-form-secondary-column">
-            <?= $this->task->renderColorField($values) ?>
             <?= $this->task->renderAssigneeField($users_list, $values, $errors) ?>
             <?= $this->task->renderSwimlaneField($swimlanes_list, $values, $errors) ?>
             <?= $this->task->renderColumnField($columns_list, $values, $errors) ?>

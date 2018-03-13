@@ -89,7 +89,7 @@ class TaskHelper extends Base
         
         $html = $this->helper->form->label(t('Actor'), 'actors[]');
         $html .= '<input type="hidden" name="actors[]" value="">';
-        $html .= '<select name="actors[]" id="form-actors" class="tag-autocomplete" multiple>';
+        $html .= '<select name="actors[]" id="form-actors" class="tag-autocomplete" multiple required>';
         
         foreach ($options as $actor) {
             $html .= sprintf(
