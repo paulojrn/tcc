@@ -4,6 +4,9 @@
     <ul>
         <li><a href="#" class="filter-helper filter-reset" data-filter="<?= isset($reset) ? $reset : '' ?>" title="<?= t('Keyboard shortcut: "%s"', 'r') ?>"><?= t('Reset filters') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open assignee:me"><?= t('My tasks') ?></a></li>
+        <li><a href="#" class="filter-helper" data-filter='status:open category:"use case"'><?= t('Use case filter') ?></a></li>
+        <li><a href="#" class="filter-helper" data-filter="status:open category:slice"><?= t('Slice filter') ?></a></li>
+        <li><a href="#" class="filter-helper" data-filter='status:open category:"use case" category:slice'><?= t('Use case and slice filter') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open assignee:me due:tomorrow"><?= t('My tasks due tomorrow') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open due:today"><?= t('Tasks due today') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open due:tomorrow"><?= t('Tasks due tomorrow') ?></a></li>

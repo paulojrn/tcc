@@ -102,6 +102,7 @@ class TaskLinkModel extends Base
                         self::TABLE.'.opposite_task_id AS task_id',
                         LinkModel::TABLE.'.label',
                         TaskModel::TABLE.'.title',
+                        TaskModel::TABLE.'.category_id',
                         TaskModel::TABLE.'.is_active',
                         TaskModel::TABLE.'.project_id',
                         TaskModel::TABLE.'.column_id',

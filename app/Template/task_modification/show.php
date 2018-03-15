@@ -17,7 +17,9 @@
         </div>
 
         <div class="task-form-secondary-column">
-            <?= $this->task->renderColorField($values) ?>
+        	<?php if (!$values['category_id'] == ("1" || "2")): ?>
+        		<?= $this->task->renderColorField($values) ?>
+        	<?php endif?>
             <?= $this->task->renderAssigneeField($users_list, $values, $errors) ?>
             <?= $this->task->renderCategoryField($categories_list, $values, $errors) ?>
             <?= $this->task->renderPriorityField($project, $values) ?>

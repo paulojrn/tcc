@@ -143,26 +143,32 @@ class TaskCreationController extends BaseController
         $project = $this->getProject();
         $values = $this->request->getValues();
         $values['category_id'] = "1";
-        
+        $values['color_id'] = "teal";
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
-        
-        if (! $valid) {
+        $errors["use_case"] = false;
+       
+        if (!$values["actors"][1]) {
             $this->flash->failure(t('Unable to create your use case.'));
-            $this->show($values, $errors);
-        } else if (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
-            $this->flash->failure(t('You cannot create use cases in this column.'));
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
-        } else {
-            $task_id = $this->taskCreationModel->create($values);
-            
-            if ($task_id > 0) {
-                $this->flash->success(t('Use case created successfully.'));
-                $this->afterSave($project, $values, $task_id);
-            } else {
-                $this->flash->failure(t('Unable to create this use case.'));
+            $errors["use_case"] = true;
+            $this->show2($values, $errors);
+        } else
+            if (! $valid) {
+                $this->flash->failure(t('Unable to create your use case.'));
+                $this->show2($values, $errors);
+            } else if (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
+                $this->flash->failure(t('You cannot create use cases in this column.'));
                 $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            } else {
+                $task_id = $this->taskCreationModel->create($values);
+                
+                if ($task_id > 0) {
+                    $this->flash->success(t('Use case created successfully.'));
+                    $this->afterSave($project, $values, $task_id);
+                } else {
+                    $this->flash->failure(t('Unable to create this use case.'));
+                    $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+                }
             }
-        }
     }
     
     /**
@@ -173,15 +179,16 @@ class TaskCreationController extends BaseController
     public function save3()
     {
         $project = $_GET['use_case_data']['project'];
-        $_GET['use_case_data']['color_id'] = "blue";
-        $values = $this->request->getValues();        
+        $values = $this->request->getValues();
+        $values["color_id"] = "blue";
         $values['category_id'] = "2";
+        
         
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
         
         if (! $valid) {
             $this->flash->failure(t('Unable to create your slice.'));
-            $this->show($values, $errors);
+            $this->show3($values, $errors);
         } else if (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create slices in this column.'));
             $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
