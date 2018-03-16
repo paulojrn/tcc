@@ -32,6 +32,11 @@
     <?= $this->render('task/exception_flow', array('task' => $task)) ?>
 <?php endif ?>
 
+<?php if (!empty($task['test_cases'])): ?>
+    <?= $this->hook->render('template:task:show:before-test_cases', array('task' => $task, 'project' => $project)) ?>
+    <?= $this->render('task/test_cases', array('task' => $task)) ?>
+<?php endif ?>
+
 <?php if(!empty($subtasks)): ?>
     <?= $this->hook->render('template:task:show:before-subtasks', array('task' => $task, 'project' => $project)) ?>
     <?= $this->render('subtask/show', array(
