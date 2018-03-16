@@ -11,22 +11,16 @@
             <?= $this->task->renderTitleField($values, $errors) ?>
             <?= $this->task->renderDescriptionField($values, $errors) ?>
             <?= $this->task->renderTagField($project, $tags) ?>
-            <?= $this->task->renderActorField($project, $actors) ?>            
-
-            <?= $this->hook->render('template:task:form:first-column', array('values' => $values, 'errors' => $errors)) ?>
+            
+			<?= $this->hook->render('template:task:form:first-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>
 
         <div class="task-form-secondary-column">
-        	<?php if (!$values['category_id'] == ("1" || "2")): ?>
-        		<?= $this->task->renderColorField($values) ?>
-        	<?php endif?>
+        	<?= $this->task->renderColorField($values) ?>
             <?= $this->task->renderAssigneeField($users_list, $values, $errors) ?>
             <?= $this->task->renderCategoryField($categories_list, $values, $errors) ?>
             <?= $this->task->renderPriorityField($project, $values) ?>
-            <?php if ($values['category_id'] == "1"): ?>
-                <br><br>
-                <?= $this->modal->large('code-fork', t('Add Slice'), 'TaskCreationController', 'show3', $values) ?>
-			<?php endif?>
+
             <?= $this->hook->render('template:task:form:second-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>
 

@@ -12,6 +12,26 @@
     <?= $this->render('task/description', array('task' => $task)) ?>
 <?php endif ?>
 
+<?php if (!empty($task['stories'])): ?>
+    <?= $this->hook->render('template:task:show:before-stories', array('task' => $task, 'project' => $project)) ?>
+    <?= $this->render('task/stories', array('task' => $task)) ?>
+<?php endif ?>
+
+<?php if (!empty($task['basic_flow'])): ?>
+    <?= $this->hook->render('template:task:show:before-basic_flow', array('task' => $task, 'project' => $project)) ?>
+    <?= $this->render('task/basic_flow', array('task' => $task)) ?>
+<?php endif ?>
+
+<?php if (!empty($task['alternative_flow'])): ?>
+    <?= $this->hook->render('template:task:show:before-alternative_flow', array('task' => $task, 'project' => $project)) ?>
+    <?= $this->render('task/alternative_flow', array('task' => $task)) ?>
+<?php endif ?>
+
+<?php if (!empty($task['exception_flow'])): ?>
+    <?= $this->hook->render('template:task:show:before-exception_flow', array('task' => $task, 'project' => $project)) ?>
+    <?= $this->render('task/exception_flow', array('task' => $task)) ?>
+<?php endif ?>
+
 <?php if(!empty($subtasks)): ?>
     <?= $this->hook->render('template:task:show:before-subtasks', array('task' => $task, 'project' => $project)) ?>
     <?= $this->render('subtask/show', array(

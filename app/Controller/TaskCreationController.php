@@ -183,7 +183,6 @@ class TaskCreationController extends BaseController
         $values["color_id"] = "blue";
         $values['category_id'] = "2";
         
-        
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
         
         if (! $valid) {
