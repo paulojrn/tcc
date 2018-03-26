@@ -115,8 +115,7 @@
                     'from' => $actor['actor_id'],
                     'to' => $task_id,
                     'length' => 200,
-                    'font' => ['align' => 'top'],
-                    'arrows' => 'to'
+                    'font' => ['align' => 'top']
                 ];
                 ?>
         <?php endforeach ?>

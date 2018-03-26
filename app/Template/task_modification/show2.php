@@ -100,30 +100,7 @@
             			<textarea name="exception_flow" placeholder="Write your text in Markdown"><?= $values['exception_flow'] ?></textarea>
             		</div>
                 </div>
-            </fieldset>
-            <fieldset>
-            <legend><b>Test cases</b></legend>
-                <div class="text-editor">
-                	<div class="text-editor-view-mode" style="display: none;">
-                		<div class="text-editor-toolbar">
-                			<a href="#"><i class="fa fa-pencil-square-o fa-fw"></i> Write</a>
-                		</div>
-                		<div class="text-editor-preview-area markdown"></div>
-                	</div>
-            		<div class="text-editor-write-mode">
-            			<div class="text-editor-toolbar">
-            				<a href="#"><i class="fa fa-eye fa-fw"></i> Preview</a>
-            				<a href="#"><i class="fa fa-bold fa-fw"></i></a>
-            				<a href="#"><i class="fa fa-italic fa-fw"></i></a>
-            				<a href="#"><i class="fa fa-strikethrough fa-fw"></i></a>
-            				<a href="#"><i class="fa fa-quote-right fa-fw"></i></a>
-            				<a href="#"><i class="fa fa-list-ul fa-fw"></i></a>
-            				<a href="#"><i class="fa fa-code fa-fw"></i></a>
-            			</div>
-            			<textarea name="test_cases" placeholder="Write your text in Markdown"><?= $values['test_cases'] ?></textarea>
-            		</div>
-                 </div>
-            </fieldset>         
+            </fieldset>     
             
             <?= $this->task->renderTagField($project, $tags) ?>
             <?= $this->task->renderActorField($project, $actors) ?><span class="form-required">*</span>
