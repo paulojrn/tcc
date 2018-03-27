@@ -63,8 +63,32 @@
                         </li>
                     <?php endif ?>
                     <li>
-                        <strong><?= t('Column:') ?></strong>
-                        <span><?= $this->text->e($task['column_title']) ?></span>
+                    	<?php if ($task['category_id'] == ("1" || "2")): ?>
+                    		<strong><?= t('Stage:') ?></strong>
+                    		<?php if ($task['category_id'] == "1"): ?>
+                    			<span><?= $this->text->e($task['column_title']) ?></span>
+                    		<?php else: ?>
+                    			<?php if ($task['column_title'] == "Input"): ?>
+                    				<span><?= $this->text->e("Scoped") ?></span>
+                    			<?php endif ?>
+                    			<?php if ($task['column_title'] == "Preparation"): ?>
+                    				<span><?= $this->text->e("Prepared") ?></span>
+                    			<?php endif ?>
+                    			<?php if ($task['column_title'] == "Development"): ?>
+                    				<span><?= $this->text->e("Analysed") ?></span>
+                    			<?php endif ?>
+                    			<?php if ($task['column_title'] == "System test"): ?>
+                    				<span><?= $this->text->e("Implemented") ?></span>
+                    			<?php endif ?>
+                    			<?php if ($task['column_title'] == "Live"): ?>
+                    				<span><?= $this->text->e("Verified") ?></span>
+                    			<?php endif ?>
+                    		<?php endif ?>
+                    	<?php else: ?>
+                    		<strong><?= t('Column:') ?></strong>
+                    		<span><?= $this->text->e($task['column_title']) ?></span>
+                    	<?php endif ?>
+                        
                     </li>
                     <li>
                         <strong><?= t('Position:') ?></strong>

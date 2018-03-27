@@ -100,7 +100,7 @@
             			<textarea name="exception_flow" placeholder="Write your text in Markdown"><?= $values['exception_flow'] ?></textarea>
             		</div>
                 </div>
-            </fieldset>           
+            </fieldset>     
             
             <?= $this->task->renderTagField($project, $tags) ?>
             <?= $this->task->renderActorField($project, $actors) ?><span class="form-required">*</span>

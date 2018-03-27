@@ -19,7 +19,13 @@ $(document).ready(function() {
             hover: true
         }
     };
-
+    
     var network = new vis.Network(container, data, options);
+    
+    network.on("doubleClick", function(properties) {
+		var str_url = this.body.nodes[properties.nodes[0]].options.url;
+		str_url = str_url.replace(/&amp;/g, '&');
+    	window.open(str_url, '_self');
+    });
 });
 

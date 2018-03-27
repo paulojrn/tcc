@@ -100,7 +100,7 @@
             		</div>
                 </div>
             </fieldset>
-                        
+                                    
             <?= $this->task->renderTagField($project) ?>
             <?= $this->task->renderActorField($project) ?><span class="form-required">*</span>
 
@@ -118,7 +118,6 @@
         <div class="task-form-secondary-column">
             <?= $this->task->renderAssigneeField($users_list, $values, $errors) ?>
             <?= $this->task->renderSwimlaneField($swimlanes_list, $values, $errors) ?>
-            <?= $this->task->renderColumnField($columns_list, $values, $errors) ?>
             <?= $this->task->renderPriorityField($project, $values) ?>
 
             <?= $this->hook->render('template:task:form:second-column', array('values' => $values, 'errors' => $errors)) ?>
