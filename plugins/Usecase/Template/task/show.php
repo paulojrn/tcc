@@ -29,9 +29,13 @@
     
             $titleItems[] = t('Priority: ') . $node['priority'];
             $titleItems[] = t('Column: ') . $node['column'];
+            $url = "?controller=TaskViewController&action=show&task_id=".$node['id']."&project_id=".$node['project_id'];
+
             if($node['category'] == "1"){
                 $items[] = [
                     'id' => $node['id'],
+                    'url' => t($url),
+                    'project_id' => $node['project_id'],
                     'label' => '#' . $node['id'] . ' ' . $node['title'],
                     'color' => $node['color'],
                     'size' => '20',
@@ -49,10 +53,12 @@
             else{
                 $items[] = [
                     'id' => $node['id'],
+                    'url' => t($url),
+                    'project_id' => $node['project_id'],
                     'label' => '#' . $node['id'] . ' ' . $node['title'],
                     'color' => "#000000",
                     'size' => '20',
-                    'image' => 'plugins/Usecase/Pics/slice.png',
+                    'image' => 'plugins/Usecase/Pics/drawslice.png',
                     'shape' => 'image',
                     'shapeProperties' => $node['active'] ? array('borderDashes' => array()) : array('borderDashes' => array(5, 5)),
                     'font' => array('color' => $node['active'] ? 'black' : 'gray'),
@@ -60,7 +66,6 @@
                         'min' => 30,
                         'max' => 30
                     ],
-                    'shadow' => 'true',
                     'mass' => 2,
                     'title' => join('<br>', $titleItems)
                 ];

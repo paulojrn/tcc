@@ -58,5 +58,7 @@
 
         <?= $this->hook->render('template:task:dropdown', array('task' => $task)) ?>
     </ul>
+    <?php if ($task['category_id'] == "1"):?>
     <br><em><b>Actor:</b> <?= $this->task->multipleActorsNameToString($task['actors']); ?></em><br>
+    <?php endif ?>
 </div>
